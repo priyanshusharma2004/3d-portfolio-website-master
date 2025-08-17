@@ -128,6 +128,26 @@ export const skills = [
     ],
   },
 ];
+export const experiences = [
+  {
+    id: 0,
+    img: "https://statspool.com/assets/logo.png", 
+    role: "Software Engineering Intern",
+    company: "Move37 AI Technologies Pvt. Ltd.",
+    date: "Jul 2025 – Dec 2025",
+    desc: "Contributed to the development of a SaaS-based Data Analytics and Automated Accounts Payable platform. Focused on frontend development — implementing dynamic user interfaces and ensuring responsive, seamless user experience. Collaborated remotely with the team using Microsoft Teams and Google Meet while gaining hands-on exposure to real-world projects.",
+    skills: [
+      "React.js",
+      "Redux",
+      "JavaScript",
+      "TypeScript",
+      "Tailwind CSS",
+      "REST APIs"
+    ],
+    doc: "https://statspool.com/",
+  },
+];
+
 export const education = [
   {
     id: 0,

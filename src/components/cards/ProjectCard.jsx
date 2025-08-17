@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -14,69 +14,42 @@ const Card = styled.div`
   flex-direction: column;
   gap: 14px;
   transition: all 0.5s ease-in-out;
-
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 0 50px 4px rgba(0, 0, 0, 0.6);
     filter: brightness(1.1);
   }
 `;
-
-const ImageWrapper = styled.div`
-  width: 100%;
-  height: 180px;
-  border-radius: 10px;
-  background-color: #222;
-  position: relative;
-  overflow: hidden;
-`;
-
-const Fallback = styled.div`
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #444, #222);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  font-weight: 700;
-  border-radius: 10px;
-`;
-
 const Image = styled.img`
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  background-color: ${({ theme }) => theme.white};
   border-radius: 10px;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+  box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
 `;
-
 const Tags = styled.div`
+  width: 100%;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 4px;
 `;
-
-const Tag = styled.span`
+const Tag = styled.div`
   font-size: 12px;
-  color: #ccc;
-  background: #2d2d2d;
-  padding: 2px 6px;
-  border-radius: 5px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.primary};
+  background-color: ${({ theme }) => theme.primary + 15};
+  padding: 2px 8px;
+  border-radius: 10px;
 `;
-
 const Details = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0px;
   padding: 0px 2px;
 `;
-
 const Title = styled.div`
   font-size: 20px;
   font-weight: 600;
@@ -86,9 +59,18 @@ const Title = styled.div`
   max-width: 100%;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow: hidden;
   text-overflow: ellipsis;
 `;
-
+const Date = styled.div`
+  font-size: 12px;
+  margin-left: 2px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary + 80};
+  @media only screen and (max-width: 768px) {
+    font-size: 10px;
+  }
+`;
 const Description = styled.div`
   font-weight: 400;
   color: ${({ theme }) => theme.text_secondary + 99};
@@ -100,72 +82,46 @@ const Description = styled.div`
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 `;
-
-const ButtonGroup = styled.div`
+const Members = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-top: auto;
-  gap: 12px;
+  align-items: center;
+  padding-left: 10px;
 `;
-
+const Avatar = styled.img`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-left: -10px;
+  background-color: ${({ theme }) => theme.white};
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 3px solid ${({ theme }) => theme.card};
+`;
 const Button = styled.a`
-  flex: 1;
-  text-align: center;
-  padding: 10px 12px;
-  background-color: ${({ theme }) => theme.primary + 20};
   color: ${({ theme }) => theme.primary};
   text-decoration: none;
   font-weight: 600;
-  border-radius: 8px;
-  transition: 0.3s ease;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.primary + 40};
-  }
+  text-align: center;
 `;
 
-const ProjectCard = ({ project }) => {
-  const [imgError, setImgError] = useState(false);
-
+const ProjectCard = ({ project, setOpenModal }) => {
   return (
-    <Card>
-      <ImageWrapper>
-        {!imgError ? (
-          <Image
-            src={project.image}
-            alt={project.title}
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <Fallback>{project.title?.charAt(0) || "?"}</Fallback>
-        )}
-      </ImageWrapper>
-
+    <Card onClick={() => setOpenModal({ state: true, project: project })}>
+      <Image src={project.image} />
       <Tags>
         {project.tags?.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
+          <Tag>{tag}</Tag>
         ))}
       </Tags>
-
       <Details>
         <Title>{project.title}</Title>
+        <Date>{project.date}</Date>
         <Description>{project.description}</Description>
       </Details>
-
-      <ButtonGroup>
-        <Button href={project.github} target="_blank" rel="noopener noreferrer">
-          View Code
-        </Button>
-        {project.webapp && (
-          <Button
-            href={project.webapp}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Live Site
-          </Button>
-        )}
-      </ButtonGroup>
+      <Members>
+        {project.member?.map((member) => (
+          <Avatar src={member.img} />
+        ))}
+      </Members>
     </Card>
   );
 };

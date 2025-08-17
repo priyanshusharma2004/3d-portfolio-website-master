@@ -4,6 +4,11 @@ import styled, { useTheme } from "styled-components";
 import { Bio } from "../data/constants";
 import { MenuRounded } from "@mui/icons-material";
 
+const ColorText = styled.span`
+  color: ${({ theme }) => theme.primary || "#ff004f"};
+  font-weight: bold;
+`;
+
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
   height: 80px;
@@ -132,7 +137,12 @@ const Navbar = () => {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/">My Portfolio</NavLogo>
+        <NavLogo to="/">
+          <ColorText>&lt;</ColorText>Priyanshu
+          <div style={{ color: theme.primary }}></div>Sharma
+          <ColorText>&gt;</ColorText>
+        </NavLogo>
+
 
         <MobileIcon onClick={() => setIsOpen(!isOpen)}>
           <MenuRounded style={{ color: "inherit" }} />
@@ -141,6 +151,7 @@ const Navbar = () => {
         <NavItems>
           <NavLink href="#About">About</NavLink>
           <NavLink href="#Skills">Skills</NavLink>
+          <NavLink href="#Experience">Experience</NavLink>
           <NavLink href="#Projects">Projects</NavLink>
           <NavLink href="#Education">Education</NavLink>
         </NavItems>
@@ -152,6 +163,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Skills">
               Skills
+            </NavLink>
+            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Experience">
+              Experience
             </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Projects">
               Projects
