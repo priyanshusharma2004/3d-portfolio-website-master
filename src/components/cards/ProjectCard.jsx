@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto; 
+  gap: 12px;
+`;
+
 const Card = styled.div`
   width: 330px;
   height: 490px;
@@ -122,6 +129,14 @@ const ProjectCard = ({ project, setOpenModal }) => {
           <Avatar src={member.img} />
         ))}
       </Members>
+      <ButtonGroup>
+    <Button dull href={project.github} target="_blank">
+      View Code
+    </Button>
+    <Button href={project.webapp} target="_blank">
+      View Live App
+    </Button>
+  </ButtonGroup>
     </Card>
   );
 };
