@@ -8,9 +8,7 @@ export const Bio = {
     "I am a driven and adaptable individual with a strong desire to grow and succeed. I welcome challenges as opportunities to learn and consistently aim to deliver meaningful and quality results with a proactive mindset.",
   github: "https://github.com/priyanshusharma2004",
   resume:
-    "https://drive.google.com/file/d/1-U6CiSTcL9yLYCawJUBm7hmkp9-pVkeS/view?usp=drive_link",
-  linkedin: "http://www.linkedin.com/in/priyanshu-sharma07",
-  Leetcode:"https://leetcode.com/u/PRIYANSHU_075/",
+    "https://drive.google.com/file/d/1eb1Rs5e3c-kiLzBP4MgN82x_Ljbrndpy/view?usp=drive_link,
 };
 
 export const skills = [
