@@ -9,8 +9,8 @@ export const Bio = {
   github: "https://github.com/priyanshusharma2004",
   resume:
     "https://drive.google.com/file/d/1eb1Rs5e3c-kiLzBP4MgN82x_Ljbrndpy/view?usp=drive_link",
-  linkedin: "http://www.linkedin.com/in/priyanshu-sharma07",
-  Leetcode:"https://leetcode.com/u/PRIYANSHU_075/",
+     linkedin: "http://www.linkedin.com/in/priyanshu-sharma07",
+    Leetcode:"https://leetcode.com/u/PRIYANSHU_075/",
 };
 
 export const skills = [
